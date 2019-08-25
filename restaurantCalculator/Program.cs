@@ -6,7 +6,7 @@ namespace restaurantCalculator
 {
     public class Program
     {
-        //#4
+        //#5
 
         static void NegativeNumber(string deniedNum)
         {
@@ -77,7 +77,11 @@ namespace restaurantCalculator
                     //calculate total
                     foreach (string num in data)
                     {
-                        total += int.Parse(num);
+                        //ignore any number greater than 1000
+                        if (int.Parse(num) < 1001)
+                        {
+                            total += int.Parse(num);
+                        }
                     }
                     //write the output
                     Console.Write(data[0]);
