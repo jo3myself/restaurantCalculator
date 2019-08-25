@@ -6,7 +6,7 @@ namespace restaurantCalculator
 {
     public class Program
     {
-        //#5
+        //#6
 
         static void NegativeNumber(string deniedNum)
         {
@@ -28,10 +28,9 @@ namespace restaurantCalculator
             }
 
             //set delimiter
-            char[] delimiter = { ',' };
             string input = userInput.Replace(@"\n", ",");
             //put string to array
-            string[] data = input.Split(delimiter);
+            string[] data = Regex.Split(input, @"[^a-zA-Z0-9-]+");
             //remove empty string in array
             data = data.Where(x => !string.IsNullOrEmpty(x)).ToArray();
 
