@@ -6,10 +6,18 @@ namespace restaurantCalculator
 {
     public class Program
     {
+        //#4
+
+        static void NegativeNumber(string deniedNum)
+        {
+            if (deniedNum != null)
+            {
+                throw new ArgumentException();
+            }
+        }
+
         public static void Main()
         {
-            //#3
-
             //read user input
             string userInput = Console.ReadLine();
 
@@ -27,6 +35,8 @@ namespace restaurantCalculator
             //remove empty string in array
             data = data.Where(x => !string.IsNullOrEmpty(x)).ToArray();
 
+            bool negative = false;
+            string deniedNumber = "";
             for (int i = 0; i < data.Length; i++)
             {
                 //check if data is a number
@@ -35,28 +45,48 @@ namespace restaurantCalculator
                 {
                     data[i] = "0";
                 }
+                else if (int.Parse(num) < 0)
+                {
+                    deniedNumber += " " + data[i];
+                    negative = true;
+                }
             }
 
-            //check array length
-            if (data.Length < 2)
+            if (negative)
+            //when negative number detected
             {
-                Console.Write(data[0]);
+                try
+                {
+                    NegativeNumber(deniedNumber);
+                }
+                catch (ArgumentException)
+                {
+                    Console.Write("Denied negative:" + deniedNumber);
+                }
             }
             else
             {
-                int total = 0;
-                //calculate total
-                foreach (string num in data)
+                //check array length
+                if (data.Length < 2)
                 {
-                    total += int.Parse(num);
+                    Console.Write(data[0]);
                 }
-                //write the output
-                Console.Write(data[0]);
-                for (int i = 1; i < data.Length; i++)
+                else
                 {
-                    Console.Write(" + " + data[i]);
+                    int total = 0;
+                    //calculate total
+                    foreach (string num in data)
+                    {
+                        total += int.Parse(num);
+                    }
+                    //write the output
+                    Console.Write(data[0]);
+                    for (int i = 1; i < data.Length; i++)
+                    {
+                        Console.Write(" + " + data[i]);
+                    }
+                    Console.Write(" = " + total);
                 }
-                Console.Write(" = " + total);
             }
         }
     }
