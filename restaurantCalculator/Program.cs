@@ -8,7 +8,7 @@ namespace restaurantCalculator
     {
         public static void Main()
         {
-            //#1
+            //#2
 
             //read user input
             string userInput = Console.ReadLine();
@@ -43,9 +43,19 @@ namespace restaurantCalculator
             }
             else
             {
-                int total = int.Parse(data[0]) + int.Parse(data[1]);
+                int total = 0;
+                //calculate total
+                foreach (string num in data)
+                {
+                    total += int.Parse(num);
+                }
                 //write the output
-                Console.Write($"{data[0]} + {data[1]} = {total}");
+                Console.Write(data[0]);
+                for (int i = 1; i < data.Length; i++)
+                {
+                    Console.Write(" + " + data[i]);
+                }
+                Console.Write(" = " + total);
             }
         }
     }
