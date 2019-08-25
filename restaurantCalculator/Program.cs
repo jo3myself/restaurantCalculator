@@ -8,7 +8,7 @@ namespace restaurantCalculator
     {
         public static void Main()
         {
-            //#2
+            //#3
 
             //read user input
             string userInput = Console.ReadLine();
@@ -21,8 +21,9 @@ namespace restaurantCalculator
 
             //set delimiter
             char[] delimiter = { ',' };
+            string input = userInput.Replace(@"\n", ",");
             //put string to array
-            string[] data = userInput.Split(delimiter);
+            string[] data = input.Split(delimiter);
             //remove empty string in array
             data = data.Where(x => !string.IsNullOrEmpty(x)).ToArray();
 
