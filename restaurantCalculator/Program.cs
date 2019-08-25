@@ -6,7 +6,7 @@ namespace restaurantCalculator
 {
     public class Program
     {
-        //#6
+        //#7
 
         static void NegativeNumber(string deniedNum)
         {
